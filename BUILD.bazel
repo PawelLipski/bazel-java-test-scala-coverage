@@ -1,0 +1,45 @@
+load("@io_bazel_rules_scala//scala:scala.bzl", "scala_junit_test", "scala_library", "scala_test", "setup_scala_testing_toolchain")
+
+#setup_scala_testing_toolchain(
+#    name = "junit_toolchain",
+#    junit_classpath = [
+#        "@maven//:junit_junit",
+#    ],
+#    visibility = ["//visibility:public"],
+#)
+
+scala_test(
+    name = "scala_test",
+    srcs = ["TestVanillaScalatest.scala"],
+    deps = [":main"],
+)
+
+#scala_junit_test(
+#    name = "scala_junit_test",
+#    size = "small",
+#    srcs = ["TestJUnitRunner.scala"],
+#    suffixes = ["Test"],
+#    deps = [":main"],
+#)
+
+java_test(
+    name = "java_test",
+    test_class = "Test",
+    runtime_deps = [":test_lib"],
+)
+
+scala_library(
+    name = "main",
+    srcs = ["Main.scala"],
+)
+
+scala_library(
+    name = "test_lib",
+    srcs = ["TestJUnitRunner.scala"],
+    deps = [
+        ":main",
+        "@maven//:junit_junit",
+        "@maven//:org_scalactic_scalactic_2_12",
+        "@maven//:org_scalatest_scalatest_2_12",
+    ],
+)
