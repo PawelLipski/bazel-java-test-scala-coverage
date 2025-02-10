@@ -1,9 +1,9 @@
-workspace(name = "virtuslab-common")
+workspace(name = "bazel-java-test-scala-coverage")
 
-local_repository(
-    name = "io_bazel_rules_scala",
-    path = "../../rules_scala",
-)
+#local_repository(
+#    name = "io_bazel_rules_scala",
+#    path = "../rules_scala",
+#)
 
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
@@ -28,12 +28,12 @@ load("@rules_python//python:repositories.bzl", "py_repositories")
 py_repositories()
 
 # See https://github.com/bazelbuild/rules_scala/releases for up to date version information.
-#http_archive(
-#    name = "io_bazel_rules_scala",
-#    sha256 = "71324bef9bc5a885097e2960d5b8effed63399b55572219919d25f43f468c716",
-#    strip_prefix = "rules_scala-6.2.1",
-#    url = "https://github.com/bazelbuild/rules_scala/releases/download/v6.2.1/rules_scala-v6.2.1.tar.gz",
-#)
+http_archive(
+    name = "io_bazel_rules_scala",
+    sha256 = "e734eef95cf26c0171566bdc24d83bd82bdaf8ca7873bec6ce9b0d524bdaf05d",
+    strip_prefix = "rules_scala-6.6.0",
+    url = "https://github.com/bazelbuild/rules_scala/releases/download/v6.6.0/rules_scala-v6.6.0.tar.gz",
+)
 
 load("@io_bazel_rules_scala//:scala_config.bzl", "scala_config")
 
