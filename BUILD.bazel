@@ -1,7 +1,7 @@
 load("@io_bazel_rules_scala//scala:scala.bzl", "scala_junit_test", "scala_library", "scala_test", "setup_scala_testing_toolchain")
-load(":print_coverage_replacements.bzl", "print_coverage_replacements")
+load(":apply_coverage_replacements.bzl", "apply_coverage_replacements")
 
-print_coverage_replacements(
+apply_coverage_replacements(
     name = "coverage_replacements",
     target_rule = ":main",
 )
